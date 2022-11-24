@@ -8,39 +8,38 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import login.dao.MemberDao;
 import login.dto.MemberDto;
 
-@WebServlet("/join")
-public class Join extends HttpServlet {
+@WebServlet("/login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher dis = request.getRequestDispatcher("step_01_loginEx/02_join.jsp"); 
-		dis.forward(request, response);
-		
-		
+			RequestDispatcher dis = request.getRequestDispatcher("step_01_loginEx/04_login.jsp");
+			dis.forward(request, response);
+			
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		
 		MemberDto memberDto = new MemberDto();
 		memberDto.setId(request.getParameter("id"));
 		memberDto.setPw(request.getParameter("pw"));
-		memberDto.setName(request.getParameter("name"));
-		memberDto.setEmail(request.getParameter("email"));
-		memberDto.setTel(request.getParameter("tel"));
 		
-		boolean isJoin = MemberDao.getInstance().joinMember(memberDto);
+		if(MemberDao.getInstance().loginMember(memberDto)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("id", request.getParameter("id"));
+		}
 		
-		request.setAttribute("isJoin", isJoin);
-		
-		RequestDispatcher dis = request.getRequestDispatcher("step_01_loginEx/03_joinAction.jsp"); 
+	
+		RequestDispatcher dis = request.getRequestDispatcher("step_01_loginEx/05_loginAction.jsp");
 		dis.forward(request, response);
-		
 	}
 
 }

@@ -42,11 +42,11 @@
 		<c:choose>
 			<c:when test="${sessionScope.id eq null }">
 				<p><a href="join">회원가입</a></p>
-				<p>로그인</p>
+				<p><a href="login">로그인</a></p>
 			</c:when>
 			<c:otherwise>
-				<p>입사지원정보수정</p>
-				<p>로그아웃</p>
+				<p><a href="">입사지원정보수정</a></p>
+				<p><a href="logout">로그아웃</a></p>
 				<p>회원탈퇴</p>
 			</c:otherwise>
 		</c:choose>
@@ -55,7 +55,7 @@
 	
 	<div align="center">
 	<!-- WebContent 하위부터 이미지 경로를 작성한다. -->
-		<img src="img/applyonline.png" alt="입사지원하기">
+		<a href="apply"><img src="img/applyonline.png" alt="입사지원하기"></a>
 	</div>
 	
 	

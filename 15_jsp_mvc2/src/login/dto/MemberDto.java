@@ -63,6 +63,12 @@ public class MemberDto {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "MemberDto [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", email=" + email
+				+ ", field=" + field + ", skill=" + skill + ", major=" + major + "]";
+	}
+	
 
 }
