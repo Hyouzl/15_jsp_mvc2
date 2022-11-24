@@ -23,7 +23,6 @@ public class Logout extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("step_01_loginEx/06_logout.jsp"); 
 		dis.forward(request, response);
 		
-		
 	}
 
 
