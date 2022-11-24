@@ -145,7 +145,7 @@ public class MemberDao {
     
     public void apply(MemberDto memberDto) {
     	
-    	// System.out.println(memberDto); // 오류 나는 곳 전 후 어디가 문제인지 파악하기 위해 찍어보기
+    	// System.out.println(memberDto); // 오류 나는 곳 전,후 어디가 문제인지 파악하기 위해 찍어보기
     	try {
     		getConnection();
     		pstmt = conn.prepareStatement("UPDATE MEMBER SET NAME=? , TEL=? , EMAIL=? , FIELD=? , SKILL=? , MAJOR=? WHERE ID=?");
