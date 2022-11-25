@@ -45,9 +45,9 @@
 				<p><a href="login">로그인</a></p>
 			</c:when>
 			<c:otherwise>
-				<p><a href="">입사지원정보수정</a></p>
+				<p><a href="update">입사지원정보수정</a></p>
 				<p><a href="logout">로그아웃</a></p>
-				<p>회원탈퇴</p>
+				<p><a href="delete">회원탈퇴</a></p>
 			</c:otherwise>
 		</c:choose>
 	</div>

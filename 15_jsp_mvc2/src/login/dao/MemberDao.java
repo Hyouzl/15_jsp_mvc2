@@ -164,8 +164,46 @@ public class MemberDao {
     	} finally{
     		getClose();
 		}
+    }
+    
+    
+    public void deleteMember(String id) {
     	
+    	try {
+    		getConnection();
+			pstmt = conn.prepareStatement("DELETE FROM MEMBER WHERE ID = ?");
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			getClose();
+		}
     	
+    }
+    
+    public void updateMember(MemberDto memberDto) {
+    	try {
+    		getConnection();
+    		pstmt = conn.prepareStatement("UPDATE MEMBER SET NAME=? , PW = ?, TEL=? , EMAIL=? , FIELD=? , SKILL=? , MAJOR=? WHERE ID=?");
+    		pstmt.setString(1, memberDto.getName());
+    		pstmt.setString(2, memberDto.getPw());
+    		pstmt.setString(3, memberDto.getTel());
+    		pstmt.setString(4, memberDto.getEmail());
+    		pstmt.setString(5, memberDto.getField());
+    		pstmt.setString(6, memberDto.getSkill());
+    		pstmt.setString(7, memberDto.getMajor());
+    		pstmt.setString(8, memberDto.getId());
+    	
+    		pstmt.executeUpdate();
+    		
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    	} finally{
+    		getClose();
+		}
     }
 
 }
